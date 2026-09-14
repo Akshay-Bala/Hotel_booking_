@@ -141,9 +141,47 @@ class HotelBookingProvider extends ChangeNotifier {
 
   /// Validates booking and returns true if valid, false otherwise.
   bool validateBooking() {
-    _recalculateAndValidate();
+    if (_checkInDate == null) {
+      _validationError = 'Please select a check-in date.';
+      notifyListeners();
+      return false;
+    }
+
+    final checkInErr = BookingUtils.validateCheckIn(_checkInDate);
+    if (checkInErr != null) {
+      _validationError = checkInErr;
+      notifyListeners();
+      return false;
+    }
+
+    if (_checkOutDate == null) {
+      _validationError = 'Please select a check-out date.';
+      notifyListeners();
+      return false;
+    }
+
+    final checkOutErr = BookingUtils.validateCheckOut(_checkInDate, _checkOutDate);
+    if (checkOutErr != null) {
+      _validationError = checkOutErr;
+      notifyListeners();
+      return false;
+    }
+
+    if (_selectedRoom == null) {
+      _validationError = 'Please select a room.';
+      notifyListeners();
+      return false;
+    }
+
+    if (isRoomBookedForSelectedDates(_selectedRoom!)) {
+      _validationError = 'Room ${_selectedRoom!.roomCode} is already booked for these dates.';
+      notifyListeners();
+      return false;
+    }
+
+    _validationError = null;
     notifyListeners();
-    return isBookingValid;
+    return true;
   }
 
   /// Confirms booking if valid.
