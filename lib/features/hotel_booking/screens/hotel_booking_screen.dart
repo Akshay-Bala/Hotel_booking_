@@ -85,20 +85,24 @@ class HotelBookingScreen extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    const Text(
-                                      'Hotel Room Booking',
-                                      style: AppTextStyles.headerTitle,
-                                    ),
-                                    const SizedBox(height: 2),
-                                    Text(
-                                      'Select dates and an available room to complete guest reservation',
-                                      style: AppTextStyles.caption.copyWith(fontSize: 12),
-                                    ),
-                                  ],
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Text(
+                                        'Hotel Room Booking',
+                                        style: AppTextStyles.headerTitle,
+                                      ),
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        'Select dates and an available room to complete guest reservation',
+                                        style: AppTextStyles.caption.copyWith(fontSize: 12),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ],
+                                  ),
                                 ),
+                                const SizedBox(width: 12),
                                 Container(
                                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                                   decoration: BoxDecoration(
