@@ -1,4 +1,3 @@
-/// Represents an existing or confirmed hotel room booking.
 class BookingRecord {
   final String bookingId;
   final String roomCode;

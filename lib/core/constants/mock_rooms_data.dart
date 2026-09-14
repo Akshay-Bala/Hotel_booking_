@@ -1,11 +1,9 @@
 import '../../features/hotel_booking/data/models/booking_record.dart';
 import '../../features/hotel_booking/data/models/room_model.dart';
 
-/// Hardcoded mock room data and sample bookings as per RAINTECH assessment requirements.
 class MockRoomsData {
   MockRoomsData._();
 
-  /// Five required hotel rooms with specific room codes, types, rates, and guest capacities.
   static const List<RoomModel> rooms = [
     RoomModel(
       roomCode: 'R101',
@@ -49,8 +47,6 @@ class MockRoomsData {
     ),
   ];
 
-  /// Sample existing bookings for bonus date collision detection.
-  /// Uses specific fixed dates in 2026 for repeatable testing and live demonstration.
   static List<BookingRecord> sampleBookings = [
     BookingRecord(
       bookingId: 'BK-1001',

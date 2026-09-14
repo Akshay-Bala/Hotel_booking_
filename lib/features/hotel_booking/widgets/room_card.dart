@@ -5,7 +5,6 @@ import '../../../core/utils/currency_formatter.dart';
 import '../../../core/widgets/room_badge.dart';
 import '../data/models/room_model.dart';
 
-/// Card displaying room specs, brass badge, pricing, and selection state.
 class RoomCard extends StatelessWidget {
   final RoomModel room;
   final bool isSelected;

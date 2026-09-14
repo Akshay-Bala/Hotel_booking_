@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
-/// Typography styles matching Raintech Hotel designs.
 class AppTextStyles {
   AppTextStyles._();
 

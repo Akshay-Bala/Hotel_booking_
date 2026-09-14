@@ -1,4 +1,3 @@
-/// Data model representing a hotel room.
 class RoomModel {
   final String roomCode;
   final String roomType;

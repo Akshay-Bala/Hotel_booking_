@@ -11,7 +11,6 @@ import '../widgets/date_selection_widget.dart';
 import '../widgets/room_card.dart';
 import '../widgets/validation_message.dart';
 
-/// Main Hotel Room Booking Screen matching Raintech Hotel designs.
 class HotelBookingScreen extends StatelessWidget {
   const HotelBookingScreen({super.key});
 

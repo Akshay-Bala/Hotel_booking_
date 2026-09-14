@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
-
-/// Top branding and navigation bar matching the Raintech Hotel PMS design.
 class BookingHeader extends StatelessWidget {
   final VoidCallback? onQuickActionsTap;
 

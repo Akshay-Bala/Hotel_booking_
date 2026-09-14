@@ -1,6 +1,5 @@
 import 'package:intl/intl.dart';
 
-/// Utility class for formatting currency in Indian Rupees (INR).
 class CurrencyFormatter {
   CurrencyFormatter._();
 
@@ -16,12 +15,10 @@ class CurrencyFormatter {
     decimalDigits: 2,
   );
 
-  /// Formats amount to INR without decimals, e.g. `₹3,500` or `₹10,500`.
   static String format(num amount) {
     return _inrFormat.format(amount);
   }
 
-  /// Formats amount to INR with two decimals, e.g. `₹3,500.00`.
   static String formatWithDecimals(num amount) {
     return _inrWithDecimalsFormat.format(amount);
   }

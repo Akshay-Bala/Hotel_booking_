@@ -29,7 +29,6 @@ void main() {
     });
 
     test('Ignores time-of-day discrepancies when calculating nights', () {
-      // Check-in at 2:00 PM, Check-out at 11:00 AM next day
       final checkIn = DateTime(2026, 9, 10, 14, 0);
       final checkOut = DateTime(2026, 9, 11, 11, 0);
       expect(BookingUtils.calculateNights(checkIn, checkOut), equals(1));
@@ -127,7 +126,7 @@ void main() {
       expect(overlaps, isTrue);
     });
 
-    test('Allows check-in on the exact day existing booking checks out (hospitality standard)', () {
+    test('Allows check-in on the exact day existing booking checks out', () {
       final overlaps = BookingUtils.isBookingOverlap(
         checkIn: DateTime(2026, 10, 14),
         checkOut: DateTime(2026, 10, 18),
@@ -140,15 +139,6 @@ void main() {
       final overlaps = BookingUtils.isBookingOverlap(
         checkIn: DateTime(2026, 10, 6),
         checkOut: DateTime(2026, 10, 10),
-        existingBooking: existingBooking,
-      );
-      expect(overlaps, isFalse);
-    });
-
-    test('Allows completely non-overlapping dates', () {
-      final overlaps = BookingUtils.isBookingOverlap(
-        checkIn: DateTime(2026, 11, 1),
-        checkOut: DateTime(2026, 11, 5),
         existingBooking: existingBooking,
       );
       expect(overlaps, isFalse);

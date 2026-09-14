@@ -4,7 +4,6 @@ import '../data/models/booking_record.dart';
 import '../data/models/room_model.dart';
 import '../utils/booking_utils.dart';
 
-/// Provider managing hotel room booking state, dates, calculations, and validations.
 class HotelBookingProvider extends ChangeNotifier {
   DateTime? _checkInDate;
   DateTime? _checkOutDate;
@@ -39,7 +38,6 @@ class HotelBookingProvider extends ChangeNotifier {
     return _allRooms.where((room) => room.maxGuests >= _guestFilter!).toList();
   }
 
-  /// Calculates number of nights safely. Returns 0 if dates are invalid or unselected.
   int get numberOfNights {
     if (_checkInDate == null || _checkOutDate == null) {
       return 0;
@@ -47,8 +45,6 @@ class HotelBookingProvider extends ChangeNotifier {
     return BookingUtils.calculateNights(_checkInDate!, _checkOutDate!);
   }
 
-  /// Calculates total price = numberOfNights * pricePerNight.
-  /// Returns 0.0 if incomplete or invalid.
   double get totalPrice {
     if (_selectedRoom == null || numberOfNights == 0) {
       return 0.0;
@@ -56,7 +52,6 @@ class HotelBookingProvider extends ChangeNotifier {
     return BookingUtils.calculateTotalPrice(numberOfNights, _selectedRoom!.pricePerNight);
   }
 
-  /// Returns whether all booking criteria are valid and ready to confirm.
   bool get isBookingValid {
     if (_checkInDate == null || _checkOutDate == null || _selectedRoom == null) {
       return false;
@@ -70,7 +65,6 @@ class HotelBookingProvider extends ChangeNotifier {
     return _validationError == null;
   }
 
-  /// Checks if a specific room is already booked for the currently selected dates.
   bool isRoomBookedForSelectedDates(RoomModel room) {
     if (_checkInDate == null || _checkOutDate == null) {
       return false;
@@ -85,13 +79,9 @@ class HotelBookingProvider extends ChangeNotifier {
     });
   }
 
-  /// Selects check-in date and handles automatic checkout date adjustment if needed.
   void selectCheckInDate(DateTime date) {
     _checkInDate = BookingUtils.normalizeDate(date);
     _isBookingConfirmed = false;
-
-    // If checkOutDate was previously chosen and is now on or before checkInDate,
-    // automatically adjust checkOutDate to checkIn + 1 day to prevent invalid silent states.
     if (_checkOutDate != null && !_checkOutDate!.isAfter(_checkInDate!)) {
       _checkOutDate = _checkInDate!.add(const Duration(days: 1));
     }

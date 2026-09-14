@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// App color palette matching the Raintech Hotel Management design.
 class AppColors {
   AppColors._();
 

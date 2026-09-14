@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_colors.dart';
 
 enum ValidationSeverity { info, warning, error }
-
-/// Validation and guidance banner matching Raintech design aesthetics.
 class ValidationMessage extends StatelessWidget {
   final String message;
   final ValidationSeverity severity;

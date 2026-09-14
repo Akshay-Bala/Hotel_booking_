@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_styles.dart';
 
-/// Metallic brass room number badge reproducing the plate design from Raintech UI.
 class RoomBadge extends StatelessWidget {
   final String roomCode;
   final double fontSize;
