@@ -21,6 +21,50 @@ class HotelBookingProvider extends ChangeNotifier {
   })  : _allRooms = initialRooms ?? List.from(MockRoomsData.rooms),
         _existingBookings = initialBookings ?? List.from(MockRoomsData.sampleBookings);
 
+  // Navigation shell state
+  int _currentNavIndex = 0;
+  int get currentNavIndex => _currentNavIndex;
+
+  void setNavIndex(int index) {
+    if (_currentNavIndex != index) {
+      _currentNavIndex = index;
+      notifyListeners();
+    }
+  }
+
+  // Check-out selection state
+  bool _room101Selected = true;
+  bool _room103Selected = true;
+  String _paymentMethod = 'Credit Card';
+
+  bool get room101Selected => _room101Selected;
+  bool get room103Selected => _room103Selected;
+  String get paymentMethod => _paymentMethod;
+
+  void toggleRoom101Selected(bool? val) {
+    _room101Selected = val ?? false;
+    notifyListeners();
+  }
+
+  void toggleRoom103Selected(bool? val) {
+    _room103Selected = val ?? false;
+    notifyListeners();
+  }
+
+  void setPaymentMethod(String method) {
+    _paymentMethod = method;
+    notifyListeners();
+  }
+
+  // Guest details state
+  String _tenantName = 'Mathew Hyden';
+  String get tenantName => _tenantName;
+
+  void setTenantName(String name) {
+    _tenantName = name;
+    notifyListeners();
+  }
+
   // Getters
   DateTime? get checkInDate => _checkInDate;
   DateTime? get checkOutDate => _checkOutDate;
